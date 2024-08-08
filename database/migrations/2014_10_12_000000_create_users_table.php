@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -19,7 +20,12 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('image');
         });
+
+        DB::table('users')->insert([
+            [ 'name' => 'Kande Pacheco', 'email' => 'cande.pacheco@gmail.com', 'password' => bcrypt('123456@$'), 'image' => 'user_image_1.jpg'],
+        ]);
     }
 
     /**
