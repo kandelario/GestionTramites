@@ -295,11 +295,11 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type' => 'navbar-search',
+        //     'text' => 'search',
+        //     'topnav_right' => true,
+        // ],
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
@@ -315,23 +315,24 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
-        [
-            'text' => 'Tramites',
-            'url' => 'admin/tramites',
-            'icon' => 'far fa-fw fa-file',
-            // 'label' => 4,
-            // 'label_color' => 'success',
-        ],
         // ['header' => 'account_settings'],
         [
             'text' => 'Asesores',
             'url' => 'admin/asesors',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-user-tie p-2',
         ],
         [
             'text' => 'Lista de Clientes',
             'url' => 'admin/clientes',
-            'icon' => 'fas fa-fw fa-users',
+            // 'icon' => 'fas fa-fw fa-usd',
+            'icon' => 'fas fa-users p-2',
+        ],
+        [
+            'text' => 'Tramites',
+            'url' => 'admin/tramites',
+            'icon' => 'fas fa-dollar-sign p-2',
+            // 'label' => 4,
+            // 'label_color' => 'success',
         ],
         // [
         //     'text' => 'multilevel',
