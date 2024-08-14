@@ -14,9 +14,9 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'SIPT',
     'title_prefix' => '',
-    'title_postfix' => '',
+    'title_postfix' => ' | Soluciones Integrales Para el Trabajador',
 
     /*
     |--------------------------------------------------------------------------
