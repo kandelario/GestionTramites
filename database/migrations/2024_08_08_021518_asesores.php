@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('correo')->nullable();
             $table->string('celular')->nullable();
             $table->string('image')->nullable();
+            $table->string('asesor')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });

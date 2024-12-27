@@ -26,8 +26,14 @@
                     <td class="text-center">{{ $tramite->porcentaje . '%' }}</td>
                     <td class="text-center">{{ '$' . $tramite->monto_asesor }}</td>
                     <td class="text-center">
+                        @php
+                            $asesor_id = 0;
+                        @endphp
                         @foreach ($asesores as $asesor)
                             @if ($asesor->id == $tramite->asesor_id)
+                                @php
+                                    $asesor_id = $asesor->id
+                                @endphp
                                 {{$asesor->nombre}}
                             @endif
                         @endforeach
@@ -42,6 +48,10 @@
                     <td class="text-center" style="width: 120px">
                         {!! Form::open(['route' => ['tramites.destroy', $tramite->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
+                            <a href="{{ route('asesors.edit', ['asesor' => $asesor_id]) }}"
+                                class='btn btn-default btn-xs'>
+                                 <i class="far fa-user"></i>
+                             </a>
                             <a href="{{ route('tramites.show', [$tramite->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-eye"></i>

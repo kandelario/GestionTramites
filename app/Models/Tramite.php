@@ -17,8 +17,9 @@ class Tramite extends Model
         'porcentaje',
         'monto_asesor',
         'email_verified_at',
-        'asesor_id',
-        'cliente_id'
+        // 'asesor_id',
+        'cliente_id',
+        'asesor'
     ];
 
     protected $casts = [
@@ -42,8 +43,9 @@ class Tramite extends Model
         'email_verified_at' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
-        'asesor_id' => 'required',
-        'cliente_id' => 'required'
+        // 'asesor_id' => 'required',
+        'cliente_id' => 'required',
+        'asesor' => 'required|string|max:255',
     ];
 
     public function cliente(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -51,8 +53,8 @@ class Tramite extends Model
         return $this->belongsTo(\App\Models\Cliente::class, 'cliente_id');
     }
 
-    public function asesor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(\App\Models\Asesore::class, 'asesor_id');
-    }
+    // public function asesor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    // {
+    //     return $this->belongsTo(\App\Models\Asesore::class, 'asesor_id');
+    // }
 }

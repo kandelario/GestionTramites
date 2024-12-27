@@ -7,6 +7,7 @@
     @else
         {!! Form::label('asesor_id', 'Asesor:') !!}
         <select name="asesor_id" id="asesor_id" class="form-control disabled">
+            <option value="">SELECCIONE UN ASESOR</option>
             @if (isset($asesores))
                 @foreach ($asesores as $asesor)
                     <option value="{{$asesor->id}}">{{$asesor->nombre}}</option>
@@ -16,6 +17,11 @@
             @endif
         </select>    
     @endif
+</div>
+
+<div class="form-group col-sm-4">
+    {!! Form::label('asesor', 'Nombre del Asesor:') !!}
+    {!! Form::text('asesor', null, ['class' => 'form-control', 'required', 'maxlength' => 255, 'maxlength' => 255]) !!}
 </div>
 
 <!-- Cliente Id Field -->
