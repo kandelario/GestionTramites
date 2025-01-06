@@ -25,7 +25,7 @@ return new class extends Migration
 
         DB::table('users')->insert([
             [ 'name' => 'Kande Pacheco', 'email' => 'cande.pacheco@gmail.com', 'password' => bcrypt('Stark4ever@$'), 'image' => 'user_image_1.jpg'],
-            [ 'name' => 'Gerencia SIPT Irapuato', 'email' => 'gerencia.sipt@sipt.com', 'password' => bcrypt('GerenciaSIPT2025'), 'image' => null],
+            [ 'name' => 'Gerencia SIPT Irapuato', 'email' => 'solucionesintegrales0923@gmail.com', 'password' => bcrypt('GerenciaSIPT2025'), 'image' => null],
         ]);
     }
 
