@@ -1,6 +1,10 @@
-<div class="card-body p-0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css">
+<link rel="stylesheet" href="{{ asset('/assets/css/dataTables.dataTables.css') }}">
+<link rel="stylesheet" href="{{ asset('/assets/css/buttons.dataTables.css') }}">
+<div class="card-body p-2">
     <div class="table-responsive">
-        <table class="table" id="tramites-table">
+        <table class="display nowrap table table-striped text-center" id="tramites-table">
             <thead>
             <tr>
                 <th class="text-center">Tramite</th>
@@ -10,9 +14,9 @@
                 <th class="text-center">Fecha Pago</th>
                 <th class="text-center">Porcentaje</th>
                 <th class="text-center">Monto Asesor</th>
-                <th class="text-center">Asesor Id</th>
-                <th class="text-center">Cliente Id</th>
-                <th class="text-center">Action</th>
+                <th class="text-center">Asesor</th>
+                <th class="text-center">Cliente</th>
+                <th class="text-center">Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -24,7 +28,7 @@
                     <td class="text-center">{{ substr($tramite->fecha_solicitud_recurso, 0, 10) }}</td>
                     <td class="text-center">{{ substr($tramite->fecha_pago, 0, 10) }}</td>
                     <td class="text-center">{{ $tramite->porcentaje . '%' }}</td>
-                    <td class="text-center">{{ '$' . $tramite->monto_asesor }}</td>
+                    <td class="text-center">{{ '$' . number_format($tramite->monto_asesor) }}</td>
                     <td class="text-center">
                         @php
                             $asesor_id = 0;
@@ -76,3 +80,31 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="{{ asset('/assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('/assets/js/dataTables.js') }}"></script>
+<script src="{{ asset('/assets/js/dataTables.buttons.js') }}"></script>
+<script src="{{ asset('/assets/js/buttons.dataTables.js') }}"></script>
+<script src="{{ asset('/assets/js/jszip.min.js') }}"></script>
+<script src="{{ asset('/assets/js/pdfmake.min.js') }}"></script>
+<script src="{{ asset('/assets/js/vfs_fonts.js') }}"></script>
+<script src="{{ asset('/assets/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('/assets/js/buttons.print.min.js') }}"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
+<script>
+    new DataTable('#tramites-table', {
+    layout: {
+        topStart: {
+            buttons: [
+                // 'copy',
+                // 'csv',
+                'excel',
+                // 'pdf',
+                'print'
+            ]
+        }
+    },
+        paginate: true,
+        select: true
+    });
+</script>

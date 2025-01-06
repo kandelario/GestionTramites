@@ -9,11 +9,10 @@ class AsesorRepository extends BaseRepository
 {
     protected $fieldSearchable = [
         'nombre',
-        'correo',
-        'celular',
+        'activo',
         'image',
         'email_verified_at',
-        'password'
+        'plaza_id'
     ];
 
     public function getFieldsSearchable(): array

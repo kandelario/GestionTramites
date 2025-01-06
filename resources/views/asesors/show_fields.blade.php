@@ -4,16 +4,10 @@
     <p>{{ $asesor->nombre }}</p>
 </div>
 
-<!-- Correo Field -->
+<!-- Activo Field -->
 <div class="col-sm-12">
-    {!! Form::label('correo', 'Correo:') !!}
-    <p>{{ $asesor->correo }}</p>
-</div>
-
-<!-- Celular Field -->
-<div class="col-sm-12">
-    {!! Form::label('celular', 'Celular:') !!}
-    <p>{{ $asesor->celular }}</p>
+    {!! Form::label('activo', 'Activo:') !!}
+    <p>{{ $asesor->activo }}</p>
 </div>
 
 <!-- Image Field -->
@@ -28,9 +22,9 @@
     <p>{{ $asesor->email_verified_at }}</p>
 </div>
 
-<!-- Password Field -->
+<!-- Plaza Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('password', 'Password:') !!}
-    <p>{{ $asesor->password }}</p>
+    {!! Form::label('plaza_id', 'Plaza Id:') !!}
+    <p>{{ $asesor->plaza_id }}</p>
 </div>
 

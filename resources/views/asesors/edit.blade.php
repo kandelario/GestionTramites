@@ -6,7 +6,7 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1>
-                        Actualizar Asesor
+                        Editar Asesor
                     </h1>
                 </div>
             </div>
@@ -29,7 +29,7 @@
 
             <div class="card-footer">
                 {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('tramites.index') }}" class="btn btn-default"> Cancelar </a>
+                <a href="{{ route('asesors.index') }}" class="btn btn-default"> Cancelar </a>
             </div>
 
             {!! Form::close() !!}

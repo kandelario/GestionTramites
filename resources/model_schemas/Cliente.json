@@ -24,31 +24,7 @@
         "inView": true
     },
     {
-        "name": "n_celular",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": "nullable|string|max:255|nullable|string|max:255",
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true,
-        "inView": true
-    },
-    {
-        "name": "n_casa",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": "nullable|string|max:255|nullable|string|max:255",
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true,
-        "inView": true
-    },
-    {
-        "name": "domicilio",
+        "name": "n_contacto",
         "dbType": "string",
         "htmlType": "text",
         "validations": "nullable|string|max:255|nullable|string|max:255",
@@ -72,6 +48,18 @@
         "inView": true
     },
     {
+        "name": "curp",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "nullable|string|max:255|nullable|string|max:255",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
         "name": "fecha_baja",
         "dbType": "date",
         "htmlType": "date",
@@ -84,10 +72,10 @@
         "inView": true
     },
     {
-        "name": "monto_asesor",
-        "dbType": "float",
-        "htmlType": "number",
-        "validations": "nullable|numeric|nullable|numeric",
+        "name": "fecha_solicitud",
+        "dbType": "date",
+        "htmlType": "date",
+        "validations": "nullable|nullable",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -96,10 +84,46 @@
         "inView": true
     },
     {
-        "name": "email_verified_at",
-        "dbType": "datetime",
+        "name": "fecha_cobro",
+        "dbType": "date",
         "htmlType": "date",
         "validations": "nullable|nullable",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "afore",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "nullable|string|max:255|nullable|string|max:255",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "monto",
+        "dbType": "integer,false",
+        "htmlType": "number",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "estatus",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "required|string|max:255|string|max:255",
         "searchable": true,
         "fillable": true,
         "primary": false,

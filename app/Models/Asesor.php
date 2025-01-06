@@ -10,30 +10,33 @@ class Asesor extends Model
 
     public $fillable = [
         'nombre',
-        'correo',
-        'celular',
+        'activo',
         'image',
-        'email_verified_at',
-        'password'
+        // 'email_verified_at',
+        'plaza_id'
     ];
 
     protected $casts = [
         'nombre' => 'string',
-        'correo' => 'string',
-        'celular' => 'string',
+        'activo' => 'boolean',
         'image' => 'string',
-        'email_verified_at' => 'datetime',
-        'password' => 'string'
+        // 'email_verified_at' => 'datetime'
     ];
 
     public static array $rules = [
         'nombre' => 'required|string|max:255',
-        'correo' => 'nullable|string|max:255',
-        'celular' => 'required|string|max:255',
-        'image' => 'nullable|string|max:255',
+        'activo' => 'required|boolean',
+        'image' => 'nullable',
+        // 'email_verified_at' => 'nullable',
         'created_at' => 'nullable',
-        'updated_at' => 'nullable'
+        'updated_at' => 'nullable',
+        'plaza_id' => 'required'
     ];
+
+    public function plaza(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(\App\Models\Plaza::class, 'plaza_id');
+    }
 
     public function tramites(): \Illuminate\Database\Eloquent\Relations\HasMany
     {

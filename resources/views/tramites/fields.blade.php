@@ -19,11 +19,6 @@
     @endif
 </div>
 
-<div class="form-group col-sm-4">
-    {!! Form::label('asesor', 'Nombre del Asesor:') !!}
-    {!! Form::text('asesor', null, ['class' => 'form-control', 'required', 'maxlength' => 255, 'maxlength' => 255]) !!}
-</div>
-
 <!-- Cliente Id Field -->
 <div class="form-group col-sm-4">
     @if (isset($clientes->id))
@@ -33,9 +28,10 @@
     @else
         {!! Form::label('cliente_id', 'Cliente:') !!}
         <select name="cliente_id" id="cliente_id" class="form-control disabled">
+            <option value="">SELECCIONE UN CLIENTE</option>
             @if (isset($clientes) && count($clientes) > 0)
-                @foreach ($clientes as $cliente)
-                    <option value="{{$cliente['id']}}">{{$cliente['nombre']}}</option>
+                @foreach ($clientes as $clientee)
+                    <option value="{{$clientee['id']}}" @if (isset($cliente) && $clientee->id == $cliente) {{ ' selected ' }} @endif>{{ $clientee->nombre }}</option>
                 @endforeach
             @else
                 <option value="">No existen Clientes Registrados</option>
@@ -48,7 +44,7 @@
 <!-- Tramite Field -->
 <div class="form-group col-sm-4">
     {!! Form::label('tramite', 'Tramite (nombre o tipo):') !!}
-    {!! Form::text('tramite', null, ['class' => 'form-control', 'required', 'maxlength' => 255, 'maxlength' => 255]) !!}
+    {!! Form::text('tramite', null, ['class' => 'form-control text-uppercase', 'required', 'maxlength' => 255, 'maxlength' => 255]) !!}
 </div>
 
 <!-- Estatus Afore Field -->

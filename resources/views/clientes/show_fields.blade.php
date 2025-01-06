@@ -4,22 +4,10 @@
     <p>{{ $cliente->nombre }}</p>
 </div>
 
-<!-- N Celular Field -->
+<!-- N Contacto Field -->
 <div class="col-sm-12">
-    {!! Form::label('n_celular', 'N Celular:') !!}
-    <p>{{ $cliente->n_celular }}</p>
-</div>
-
-<!-- N Casa Field -->
-<div class="col-sm-12">
-    {!! Form::label('n_casa', 'N Casa:') !!}
-    <p>{{ $cliente->n_casa }}</p>
-</div>
-
-<!-- Domicilio Field -->
-<div class="col-sm-12">
-    {!! Form::label('domicilio', 'Domicilio:') !!}
-    <p>{{ $cliente->domicilio }}</p>
+    {!! Form::label('n_contacto', 'N Contacto:') !!}
+    <p>{{ $cliente->n_contacto }}</p>
 </div>
 
 <!-- Nss Field -->
@@ -28,21 +16,45 @@
     <p>{{ $cliente->nss }}</p>
 </div>
 
+<!-- Curp Field -->
+<div class="col-sm-12">
+    {!! Form::label('curp', 'Curp:') !!}
+    <p>{{ $cliente->curp }}</p>
+</div>
+
 <!-- Fecha Baja Field -->
 <div class="col-sm-12">
     {!! Form::label('fecha_baja', 'Fecha Baja:') !!}
     <p>{{ $cliente->fecha_baja }}</p>
 </div>
 
-<!-- Monto Asesor Field -->
+<!-- Fecha Solicitud Field -->
 <div class="col-sm-12">
-    {!! Form::label('monto_asesor', 'Monto Asesor:') !!}
-    <p>{{ $cliente->monto_asesor }}</p>
+    {!! Form::label('fecha_solicitud', 'Fecha Solicitud:') !!}
+    <p>{{ $cliente->fecha_solicitud }}</p>
 </div>
 
-<!-- Email Verified At Field -->
+<!-- Fecha Cobro Field -->
 <div class="col-sm-12">
-    {!! Form::label('email_verified_at', 'Email Verified At:') !!}
-    <p>{{ $cliente->email_verified_at }}</p>
+    {!! Form::label('fecha_cobro', 'Fecha Cobro:') !!}
+    <p>{{ $cliente->fecha_cobro }}</p>
+</div>
+
+<!-- Afore Field -->
+<div class="col-sm-12">
+    {!! Form::label('afore', 'Afore:') !!}
+    <p>{{ $cliente->afore }}</p>
+</div>
+
+<!-- Monto Field -->
+<div class="col-sm-12">
+    {!! Form::label('monto', 'Monto:') !!}
+    <p>{{ $cliente->monto }}</p>
+</div>
+
+<!-- Estatus Field -->
+<div class="col-sm-12">
+    {!! Form::label('estatus', 'Estatus:') !!}
+    <p>{{ $cliente->estatus }}</p>
 </div>
 

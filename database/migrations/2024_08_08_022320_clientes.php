@@ -14,11 +14,16 @@ return new class extends Migration
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('n_celular')->nullable();
-            $table->string('n_casa')->nullable();
-            $table->string('domicilio')->nullable();
+            $table->string('n_contacto')->nullable();
             $table->string('nss')->nullable();
+            $table->string('curp')->nullable();
             $table->date('fecha_baja')->nullable();
+            $table->date('fecha_solicitud')->nullable();
+            $table->date('fecha_cobro')->nullable();
+            $table->string('afore')->nullable();
+            $table->integer('monto')->default(0);
+            $table->string('estatus')->default('pendiente');
+            // $table->enum('estatus',['pagado','pendiente', 'completo'])->default('pendiente');
             $table->timestamps();
         });
     }

@@ -20,11 +20,12 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('image');
+            $table->string('image')->nullable();
         });
 
         DB::table('users')->insert([
             [ 'name' => 'Kande Pacheco', 'email' => 'cande.pacheco@gmail.com', 'password' => bcrypt('123456@$'), 'image' => 'user_image_1.jpg'],
+            [ 'name' => 'Gerencia SIPT Irapuato', 'email' => 'gerencia.sipt@sipt.com', 'password' => bcrypt('GerenciaSIPT2025'), 'image' => null],
         ]);
     }
 

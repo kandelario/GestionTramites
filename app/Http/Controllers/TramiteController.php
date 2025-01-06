@@ -11,6 +11,7 @@ use Laracasts\Flash\Flash;
 
 use App\Models\Asesor;
 use App\Models\Cliente;
+use App\Models\Plaza;
 use Illuminate\Support\Facades\DB;
 
 class TramiteController extends AppBaseController
@@ -31,11 +32,13 @@ class TramiteController extends AppBaseController
         $tramites = $this->tramiteRepository->paginate(10);
         $asesores = Asesor::all();
         $clientes = Cliente::all();
+        $plazas = Plaza::all();
 
         return view('tramites.index')
             ->with('tramites', $tramites)
             ->with('asesores', $asesores)
-            ->with('clientes', $clientes);
+            ->with('clientes', $clientes)
+            ->with('plazas', $plazas);
     }
 
     /**

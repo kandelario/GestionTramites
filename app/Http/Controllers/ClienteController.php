@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateClienteRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\ClienteRepository;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 
 class ClienteController extends AppBaseController
 {

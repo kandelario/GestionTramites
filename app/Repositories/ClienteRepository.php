@@ -9,13 +9,15 @@ class ClienteRepository extends BaseRepository
 {
     protected $fieldSearchable = [
         'nombre',
-        'n_celular',
-        'n_casa',
-        'domicilio',
+        'n_contacto',
         'nss',
+        'curp',
         'fecha_baja',
-        'monto_asesor',
-        'email_verified_at'
+        'fecha_solicitud',
+        'fecha_cobro',
+        'afore',
+        'monto',
+        'estatus'
     ];
 
     public function getFieldsSearchable(): array

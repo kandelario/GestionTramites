@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('asesores', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('correo')->nullable();
-            $table->string('celular')->nullable();
+            // $table->string('correo')->nullable();
+            // $table->string('celular')->nullable();
+            $table->boolean('activo')->default(1);
             $table->string('image')->nullable();
-            $table->string('asesor')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
+            // $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
     }

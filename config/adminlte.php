@@ -306,16 +306,27 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'search',
+        // ],
         [
             'text' => 'blog',
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
-        // ['header' => 'account_settings'],
+        
+        ['header' => 'GESTIÓN'],
+        [
+            'text' => 'Usuarios',
+            'url' => 'admin/users',
+            'icon' => 'fas fa-users p-2',
+        ],
+        [
+            'text' => 'Plazas',
+            'url' => 'admin/plazas',
+            'icon' => 'fas fa-user-tie p-2',
+        ],
         [
             'text' => 'Asesores',
             'url' => 'admin/asesors',
@@ -327,6 +338,7 @@ return [
             // 'icon' => 'fas fa-fw fa-usd',
             'icon' => 'fas fa-users p-2',
         ],
+        ['header' => 'SERVICIOS'],
         [
             'text' => 'Tramites',
             'url' => 'admin/tramites',
