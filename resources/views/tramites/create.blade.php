@@ -16,26 +16,28 @@
     <div class="content px-3">
 
         @include('adminlte-templates::common.errors')
+        
 
-        <div class="card">
+                {!! Form::open(['route' => 'tramites.store']) !!}
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                @include('tramites.client_fields')
+                            </div>
 
-            {!! Form::open(['route' => 'tramites.store']) !!}
-
-            <div class="card-body">
-
-                <div class="row">
-                    @include('tramites.fields')
+                            <div class="row">
+                                @include('tramites.fields')
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <div class="card-footer">
+                    {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
+                    <a href="{{ route('tramites.index') }}" class="btn btn-default"> Cancelar </a>
+                </div>
+                {!! Form::close() !!}
 
-            </div>
-
-            <div class="card-footer">
-                {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('tramites.index') }}" class="btn btn-default"> Cancelar </a>
-            </div>
-
-            {!! Form::close() !!}
-
-        </div>
+            
     </div>
 @endsection

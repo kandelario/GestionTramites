@@ -34,24 +34,24 @@
 </div>
 
 <!-- Fecha Solicitud Field -->
-<div class="form-group col-sm-4">
+{{-- <div class="form-group col-sm-4">
     {!! Form::label('fecha_solicitud', 'Fecha Solicitud:') !!}
     @if (isset($cliente->fecha_solicitud))
         {!! Form::date('fecha_solicitud', substr($cliente->fecha_solicitud, 0, 10), ['class' => 'form-control','id'=>'fecha_baja']) !!}
     @else
         {!! Form::date('fecha_solicitud', null, ['class' => 'form-control','id'=>'fecha_baja']) !!}
     @endif
-</div>
+</div> --}}
 
 <!-- Fecha Cobro Field -->
-<div class="form-group col-sm-4">
+{{-- <div class="form-group col-sm-4">
     {!! Form::label('fecha_cobro', 'Fecha Cobro:') !!}
     @if (isset($cliente->fecha_cobro))
         {!! Form::date('fecha_cobro', substr($cliente->fecha_cobro, 0, 10), ['class' => 'form-control','id'=>'fecha_baja']) !!}
     @else
         {!! Form::date('fecha_cobro', null, ['class' => 'form-control','id'=>'fecha_baja']) !!}
     @endif
-</div>
+</div> --}}
 
 <!-- Afore Field -->
 <div class="form-group col-sm-4">

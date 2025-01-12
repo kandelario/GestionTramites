@@ -23,6 +23,10 @@
 
             <div class="card-body">
                 <div class="row">
+                    @include('tramites.client_fields')
+                </div>
+
+                <div class="row">
                     @include('tramites.fields')
                 </div>
             </div>

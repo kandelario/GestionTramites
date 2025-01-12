@@ -47,11 +47,9 @@ class TramiteController extends AppBaseController
     public function create()
     {
         $asesores = Asesor::all();
-        $clientes = Cliente::all();
 
         return view('tramites.create')
-            ->with('asesores', $asesores)
-            ->with('clientes', $clientes);
+            ->with('asesores', $asesores);
     }
 
     /**
@@ -99,13 +97,10 @@ class TramiteController extends AppBaseController
         
         $asesores = DB::table('asesores')
             ->where('id', $tramite->asesor_id)->first();
-        $clientees = DB::table('clientes')
-            ->where('id', $tramite->cliente_id)->first();
 
         return view('tramites.edit')
             ->with('tramite', $tramite)
-            ->with('asesores', $asesores)
-            ->with('clientes', $clientees);
+            ->with('asesores', $asesores);
     }
 
     /**

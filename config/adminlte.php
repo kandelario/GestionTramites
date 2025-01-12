@@ -332,12 +332,11 @@ return [
             'url' => 'admin/asesors',
             'icon' => 'fas fa-user-tie p-2',
         ],
-        [
-            'text' => 'Lista de Clientes',
-            'url' => 'admin/clientes',
-            // 'icon' => 'fas fa-fw fa-usd',
-            'icon' => 'fas fa-users p-2',
-        ],
+        // [
+        //     'text' => 'Lista de Clientes',
+        //     'url' => 'admin/clientes',
+        //     'icon' => 'fas fa-users p-2',
+        // ],
         ['header' => 'SERVICIOS'],
         [
             'text' => 'Tramites',

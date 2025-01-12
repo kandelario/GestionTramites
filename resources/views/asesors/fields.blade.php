@@ -33,7 +33,17 @@
         @if (isset($plazas))
             <option value="">Seleccione una plaza</option>
             @foreach ($plazas as $plaza)
-                <option value="{{$plaza->id}}">{{$plaza->nombre}}</option>
+                @if (isset($asesor))
+                    @if ($asesor->plaza_id == $plaza->id)
+                        <option value="{{$plaza->id}}" selected>{{$plaza->nombre}}</option>
+                    @else
+                        <option value="{{$plaza->id}}">{{$plaza->nombre}}</option>
+                    @endif
+                        
+                @else
+                    <option value="{{$plaza->id}}">{{$plaza->nombre}}</option>
+                @endif
+                
             @endforeach
         @else
             <option value="">No existen plazas registradas</option>
@@ -49,6 +59,8 @@
 
             @if ($asesor->activo == 0)
                 {!! Form::checkbox('activo', '1', null, ['class' => 'form-check-input']) !!}
+            @else
+                {!! Form::checkbox('activo', '1', null, ['class' => 'form-check-input', 'checked']) !!}
             @endif
             
         @else

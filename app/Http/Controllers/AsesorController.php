@@ -113,6 +113,7 @@ class AsesorController extends AppBaseController
     public function edit($id)
     {
         $asesor = $this->asesorRepository->find($id);
+        $plazas = Plaza::all();
 
         if (empty($asesor)) {
             Flash::error('Asesor not found');
@@ -120,7 +121,9 @@ class AsesorController extends AppBaseController
             return redirect(route('asesors.index'));
         }
 
-        return view('asesors.edit')->with('asesor', $asesor);
+        return view('asesors.edit')
+            ->with('asesor', $asesor)
+            ->with('plazas', $plazas);
     }
 
     /**

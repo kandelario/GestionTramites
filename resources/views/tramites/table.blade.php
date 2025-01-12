@@ -7,28 +7,35 @@
         <table class="display nowrap table table-striped text-center" id="tramites-table">
             <thead>
             <tr>
-                <th class="text-center">Tramite</th>
-                <th class="text-center">Estatus Afore</th>
+                <th class="text-center">Cliente</th>
+                <th class="text-center">N° Contacto</th>
+                <th class="text-center">NSS</th>
+                <th class="text-center">CURP</th>
                 <th class="text-center">Fecha Baja</th>
+                <th class="text-center">Afore</th>
+                <th class="text-center">Monto</th>
+                <th class="text-center">Estatus</th>
+
+                <th class="text-center">Asesor</th>
+                <th class="text-center">Trámite</th>
                 <th class="text-center">Fecha Solicitud Recurso</th>
                 <th class="text-center">Fecha Pago</th>
-                <th class="text-center">Porcentaje</th>
+                <th class="text-center">Porcentaje Asesor</th>
                 <th class="text-center">Monto Asesor</th>
-                <th class="text-center">Asesor</th>
-                <th class="text-center">Cliente</th>
                 <th class="text-center">Acciones</th>
             </tr>
             </thead>
             <tbody>
             @foreach($tramites as $tramite)
                 <tr>
-                    <td class="text-center">{{ $tramite->tramite }}</td>
-                    <td class="text-center">{{ $tramite->estatus_afore }}</td>
-                    <td class="text-center">{{ substr($tramite->fecha_baja, 0, 10) }}</td>
-                    <td class="text-center">{{ substr($tramite->fecha_solicitud_recurso, 0, 10) }}</td>
-                    <td class="text-center">{{ substr($tramite->fecha_pago, 0, 10) }}</td>
-                    <td class="text-center">{{ $tramite->porcentaje . '%' }}</td>
-                    <td class="text-center">{{ '$' . number_format($tramite->monto_asesor) }}</td>
+                    <td class="text-center">{{ $tramite->c_nombre }}</td>
+                    <td class="text-center">{{ $tramite->c_contacto }}</td>
+                    <td class="text-center">{{ $tramite->c_nss }}</td>
+                    <td class="text-center">{{ $tramite->c_curp }}</td>
+                    <td class="text-center">{{ substr($tramite->c_afore_fecha_baja, 0, 10) }}</td>
+                    <td class="text-center">{{ $tramite->c_afore }}</td>
+                    <td class="text-center">{{ '$' . number_format($tramite->c_monto) }}</td>
+                    <td class="text-center">{{ $tramite->t_estatus }}</td>
                     <td class="text-center">
                         @php
                             $asesor_id = 0;
@@ -42,24 +49,14 @@
                             @endif
                         @endforeach
                     </td>
-                    <td class="text-center">
-                        @foreach ($clientes as $cliente)
-                            @if ($cliente->id == $tramite->cliente_id)
-                                {{$cliente->nombre}}
-                            @endif
-                        @endforeach
-                    </td>
+                    <td class="text-center">{{ $tramite->tramite }}</td>
+                    <td class="text-center">{{ substr($tramite->t_fecha_solicitud_recurso, 0, 10) }}</td>
+                    <td class="text-center">{{ substr($tramite->t_fecha_pago, 0, 10) }}</td>
+                    <td class="text-center">{{ $tramite->t_porcentaje . '%' }}</td>
+                    <td class="text-center">{{ '$' . number_format($tramite->t_monto_para_asesor) }}</td>
                     <td class="text-center" style="width: 120px">
                         {!! Form::open(['route' => ['tramites.destroy', $tramite->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
-                            <a href="{{ route('asesors.edit', ['asesor' => $asesor_id]) }}"
-                                class='btn btn-default btn-xs'>
-                                 <i class="far fa-user"></i>
-                             </a>
-                            <a href="{{ route('tramites.show', [$tramite->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-eye"></i>
-                            </a>
                             <a href="{{ route('tramites.edit', [$tramite->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-edit"></i>
