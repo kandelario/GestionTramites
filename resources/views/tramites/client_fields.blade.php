@@ -21,7 +21,7 @@
         <!-- Nss Field -->
         <div class="form-group col-sm-3">
             {!! Form::label('c_nss', 'NSS:') !!}
-            {!! Form::text('c_nss', null, ['class' => 'form-control', 'minlength' => 0, 'maxlength' => 10]) !!}
+            {!! Form::text('c_nss', null, ['class' => 'form-control', 'minlength' => 0, 'maxlength' => 11]) !!}
         </div>
 
         <!-- Curp Field -->
