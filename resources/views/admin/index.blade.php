@@ -5,7 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mt-2">
-                <div class="card-header">{{ __('Bienvenidos a Soluciones Integrales Para el Trabajador!') }}</div>
+                <div class="card-header">
+                    {{ __('Bienvenidos a Soluciones Integrales Para el Trabajador!') }}
+                    {{-- @dd(auth()->user()->roles) --}}
+                    {{-- @if (isset(auth()->user()->roles))
+                        {{ auth()->user()->getRoleNames() }}
+                    @else
+                        {{ 'No existe rol asignado su usuario' }}
+                    @endif --}}
+                    
+
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))

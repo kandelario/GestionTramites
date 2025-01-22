@@ -26,53 +26,64 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($tramites as $tramite)
-                <tr>
-                    <td class="text-center">{{ $tramite->c_nombre }}</td>
-                    <td class="text-center">{{ $tramite->c_contacto }}</td>
-                    <td class="text-center">{{ $tramite->c_nss }}</td>
-                    <td class="text-center">{{ $tramite->c_curp }}</td>
-                    <td class="text-center">{{ substr($tramite->c_afore_fecha_baja, 0, 10) }}</td>
-                    <td class="text-center">{{ $tramite->c_afore }}</td>
-                    <td class="text-center">{{ '$' . number_format($tramite->c_monto) }}</td>
-                    <td class="text-center">{{ $tramite->t_estatus }}</td>
-                    <td class="text-center">
-                        @php
-                            $asesor_id = 0;
-                        @endphp
-                        @foreach ($asesores as $asesor)
-                            @if ($asesor->id == $tramite->asesor_id)
+                
+                @foreach($tramites as $tramite)
+                    @if ($tramite->id > 0)
+                        <tr>
+                            <td class="text-center">{{ $tramite->c_nombre }}</td>
+                            <td class="text-center">{{ $tramite->c_contacto }}</td>
+                            <td class="text-center">{{ $tramite->c_nss }}</td>
+                            <td class="text-center">{{ $tramite->c_curp }}</td>
+                            <td class="text-center">{{ substr($tramite->c_afore_fecha_baja, 0, 10) }}</td>
+                            <td class="text-center">{{ $tramite->c_afore }}</td>
+                            <td class="text-center">{{ '$' . number_format($tramite->c_monto) }}</td>
+                            <td class="text-center">{{ $tramite->t_estatus }}</td>
+                            <td class="text-center">
                                 @php
-                                    $asesor_id = $asesor->id
+                                    $asesor_id = 0;
                                 @endphp
-                                {{$asesor->nombre}}
-                            @endif
-                        @endforeach
-                    </td>
-                    <td class="text-center">{{ $tramite->tramite }}</td>
-                    <td class="text-center">{{ substr($tramite->t_fecha_solicitud_recurso, 0, 10) }}</td>
-                    <td class="text-center">{{ substr($tramite->t_fecha_pago, 0, 10) }}</td>
-                    <td class="text-center">{{ $tramite->t_porcentaje . '%' }}</td>
-                    <td class="text-center">{{ '$' . number_format($tramite->t_monto_para_asesor) }}</td>
-                    <td class="text-center" style="width: 120px">
-                        {!! Form::open(['route' => ['tramites.destroy', $tramite->id], 'method' => 'delete']) !!}
-                        <div class='btn-group'>
-                            <a href="{{ route('tramites.edit', [$tramite->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-edit"></i>
-                            </a>
-                            {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                        </div>
-                        {!! Form::close() !!}
-                    </td>
-                </tr>
-            @endforeach
+                                @foreach ($asesores as $asesor)
+                                    @if ($asesor->id == $tramite->asesor_id)
+                                        @php
+                                            $asesor_id = $asesor->id
+                                        @endphp
+                                        {{$asesor->nombre}}
+                                    @endif
+                                @endforeach
+                            </td>
+                            <td class="text-center">{{ $tramite->tramite }}</td>
+                            <td class="text-center">{{ substr($tramite->t_fecha_solicitud_recurso, 0, 10) }}</td>
+                            <td class="text-center">{{ substr($tramite->t_fecha_pago, 0, 10) }}</td>
+                            <td class="text-center">{{ $tramite->t_porcentaje . '%' }}</td>
+                            <td class="text-center">{{ '$' . number_format($tramite->t_monto_para_asesor) }}</td>
+                            <td class="text-center" style="width: 120px">
+                                {!! Form::open(['route' => ['tramites.destroy', $tramite->id], 'method' => 'delete']) !!}
+                                <div class='btn-group'>
+                                    <a href="{{ route('tramites.edit', [$tramite->id]) }}"
+                                    class='btn btn-default btn-xs'>
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                    @if (Auth::user()->hasRole('Superadmin') || Auth::user()->hasRole('Admin'))
+                                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                                    @endif
+                                    
+                                </div>
+                                {!! Form::close() !!}
+                            </td>
+                        </tr>
+                    @else
+                        <tr><td>No existen registros</td></tr>
+                    @endif
+                        
+                @endforeach
+            
             </tbody>
         </table>
     </div>
 
     <div class="card-footer clearfix">
         <div class="float-right">
+            {{-- @dd($tramites) --}}
             @include('adminlte-templates::common.paginate', ['records' => $tramites])
         </div>
     </div>

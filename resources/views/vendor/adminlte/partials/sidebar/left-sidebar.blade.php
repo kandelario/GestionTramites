@@ -19,8 +19,8 @@
                     data-accordion="false"
                 @endif>
                 {{-- Configured sidebar links --}}
-                @each('adminlte::partials.sidebar.menu-item', $adminlte->menu('sidebar'), 'item')
-                {{-- @include('layouts.menu') --}}
+                {{-- @each('adminlte::partials.sidebar.menu-item', $adminlte->menu('sidebar'), 'item') --}}
+                @include('layouts.menu')
             </ul>
         </nav>
     </div>

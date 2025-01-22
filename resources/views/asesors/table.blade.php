@@ -28,18 +28,18 @@
                         @endif
                     </td>
                     <td class="text-center">
-                        @if ($asesor->activo == 1)
-                            {{ 'Activo' }}    
-                        @else
-                            {{ 'Incactivo' }}
-                        @endif
-                    </td>
-                    <td class="text-center">
                         @foreach ($plazas as $plaza)
                             @if ($plaza->id == $asesor->plaza_id)
                                 {{$plaza->nombre}}
                             @endif
                         @endforeach
+                    </td>
+                    <td class="text-center">
+                        @if ($asesor->activo == 1)
+                            {{ 'Activo' }}    
+                        @else
+                            {{ 'Incactivo' }}
+                        @endif
                     </td>
                     <td class="text-center" style="width: 120px">
                         {!! Form::open(['route' => ['asesors.destroy', $asesor->id], 'method' => 'delete']) !!}

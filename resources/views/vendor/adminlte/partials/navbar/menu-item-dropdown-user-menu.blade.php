@@ -18,12 +18,19 @@
     {{-- User menu toggler --}}
     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
         @if(config('adminlte.usermenu_image'))
-            <img src="{{ Auth::user()->adminlte_image() }}"
+            {{-- <img src="{{ Auth::user()->adminlte_image() }}" --}}
+            @if(Auth::user()->image)
+                <img src="{{asset('assets/usuarios_imgs/' . Auth::user()->image)}}" alt="" style="width: auto; height: auto;max-width: 100px; max-height: 100px;" class="rounded-3">
+            @else
+                <img src="{{asset('assets/imgs/default.webp')}}" alt="" style="width: auto; height: auto;max-width: 100px; max-height: 100px;" class="rounded-3">
+            @endif
+            <img src="{{ Auth::user()->image }}"
                  class="user-image img-circle elevation-2"
                  alt="{{ Auth::user()->name }}">
         @endif
         <span @if(config('adminlte.usermenu_image')) class="d-none d-md-inline" @endif>
             {{ Auth::user()->name }}
+            <strong>{{ Auth::user()->roles[0]->name }}</strong>
         </span>
     </a>
 

@@ -12,7 +12,11 @@ use Laracasts\Flash\Flash;
 use App\Models\Asesor;
 use App\Models\Cliente;
 use App\Models\Plaza;
+use App\Models\Tramite;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+use function Laravel\Prompts\select;
 
 class TramiteController extends AppBaseController
 {
@@ -29,7 +33,28 @@ class TramiteController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $tramites = $this->tramiteRepository->paginate(10);
+        // $tramites = $this->tramiteRepository->paginate(10);
+        // if (Auth::user()->hasRole('Supervisor de Plaza')) {
+            
+        // } else {
+            
+        // }
+        // $user = DB::table('users')->where('id', Auth::user()->id);
+        $userID = Auth::user()->id;
+        $users = '';
+        $miPlaza = DB::table('plazas')->where('id', Auth::user()->plaza_id_asignado)->first();
+        
+        
+        // if ($user->hasRole('Supervisor de Plaza')) {
+        if (Auth::user()->hasRole('Supervisor de Plaza')) {
+            $asesores = DB::table('asesores')->select('id')->where('plaza_id', $miPlaza->id);
+            $tramites = DB::table('tramites')->whereIn('asesor_id', $asesores)->paginate(10);
+            
+        }elseif(Auth::user()->hasRole('Superadmin') || Auth::user()->hasRole('Admin')){
+            $tramites = $this->tramiteRepository->paginate(10);
+        }
+        // dd($users);
+        
         $asesores = Asesor::all();
         $clientes = Cliente::all();
         $plazas = Plaza::all();
@@ -46,8 +71,14 @@ class TramiteController extends AppBaseController
      */
     public function create()
     {
-        $asesores = Asesor::all();
-
+        if(Auth::user()->hasRole('Supervisor de Plaza')){
+            $miPlaza = DB::table('plazas')->where('id', Auth::user()->plaza_id_asignado)->first();
+            $asesores = DB::table('asesores')->where('plaza_id', $miPlaza->id)->get();
+            // $tramites = DB::table('tramites')->whereIn('asesor_id', $asesores)->paginate(10);  
+        }else{
+            $asesores = Asesor::all();
+        }
+        
         return view('tramites.create')
             ->with('asesores', $asesores);
     }
