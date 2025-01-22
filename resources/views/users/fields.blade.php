@@ -29,7 +29,7 @@
             <option value="">SELECCIONE UN ROL PARA EL USUARIO</option>
             
             @foreach ($roles as $role)
-                @if (isset($user->roles()->first()->name) && $role->name == $user->roles()->first()->name)
+                @if (isset($user) && $role->name == $user->roles()->first()->name)
                     <option value="{{ $role->name }}" selected>{{ $role->name }}</option>
                 @else
                     <option value="{{ $role->name }}">{{ $role->name }}</option>
