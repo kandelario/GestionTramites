@@ -83,7 +83,6 @@
 
     <div class="card-footer clearfix">
         <div class="float-right">
-            {{-- @dd($tramites) --}}
             @include('adminlte-templates::common.paginate', ['records' => $tramites])
         </div>
     </div>
