@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 
 
 Route::get('/', function (Request $request) {
+    dd($request);
     if(!$request->User()) {
         return view('auth.login');
     }else{
