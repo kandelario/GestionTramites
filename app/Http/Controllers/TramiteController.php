@@ -15,6 +15,7 @@ use App\Models\Plaza;
 use App\Models\Tramite;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 use function Laravel\Prompts\select;
 
@@ -44,13 +45,13 @@ class TramiteController extends AppBaseController
         $users = '';
         $miPlaza = DB::table('plazas')->where('id', Auth::user()->plaza_id_asignado)->first();
         
-        
+        $user = Auth::user();
         // if ($user->hasRole('Supervisor de Plaza')) {
-        if (Auth::user()->hasRole('Supervisor de Plaza')) {
+        if ($user->hasRole('Supervisor de Plaza')) {
             $asesores = DB::table('asesores')->select('id')->where('plaza_id', $miPlaza->id);
             $tramites = DB::table('tramites')->whereIn('asesor_id', $asesores)->paginate(10);
             
-        }elseif(Auth::user()->hasRole('Superadmin') || Auth::user()->hasRole('Admin')){
+        }elseif($user->hasRole('Superadmin') || $user->hasRole('Admin')){
             $tramites = $this->tramiteRepository->paginate(10);
         }
         // dd($users);
