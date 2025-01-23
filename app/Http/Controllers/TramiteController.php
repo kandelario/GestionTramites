@@ -16,6 +16,8 @@ use App\Models\Tramite;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Models\Role;
 
 use function Laravel\Prompts\select;
 
@@ -23,6 +25,8 @@ class TramiteController extends AppBaseController
 {
     /** @var TramiteRepository $tramiteRepository*/
     private $tramiteRepository;
+
+    use HasRoles;
 
     public function __construct(TramiteRepository $tramiteRepo)
     {
