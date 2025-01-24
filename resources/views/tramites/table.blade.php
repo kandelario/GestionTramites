@@ -64,7 +64,7 @@
                                         <i class="far fa-edit"></i>
                                     </a>
                                     @if (Auth::user()->hasRole('Superadmin') || Auth::user()->hasRole('Admin'))
-                                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Seguro que quieres eliminar este registro?')"]) !!}
                                     @endif
                                     
                                 </div>

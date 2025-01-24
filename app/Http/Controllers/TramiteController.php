@@ -76,7 +76,7 @@ class TramiteController extends AppBaseController
      */
     public function create()
     {
-        if(Auth::user()->hasRole('Supervisor de Plaza')){
+        if(!Auth::user()->hasRole('Supervisor de Plaza') || !Auth::user()->hasRole('Admin')){
             $miPlaza = DB::table('plazas')->where('id', Auth::user()->plaza_id_asignado)->first();
             $asesores = DB::table('asesores')->where('plaza_id', $miPlaza->id)->get();
             // $tramites = DB::table('tramites')->whereIn('asesor_id', $asesores)->paginate(10);  
@@ -97,7 +97,7 @@ class TramiteController extends AppBaseController
 
         $tramite = $this->tramiteRepository->create($input);
 
-        Flash::success('Tramite saved successfully.');
+        Flash::success('Tramite registrado con éxito.');
 
         return redirect(route('tramites.index'));
     }
@@ -110,7 +110,7 @@ class TramiteController extends AppBaseController
         $tramite = $this->tramiteRepository->find($id);
 
         if (empty($tramite)) {
-            Flash::error('Tramite not found');
+            Flash::error('Tramite no encontrado');
 
             return redirect(route('tramites.index'));
         }
@@ -126,7 +126,7 @@ class TramiteController extends AppBaseController
         $tramite = $this->tramiteRepository->find($id);
         
         if (empty($tramite)) {
-            Flash::error('Tramite not found');
+            Flash::error('Tramite no encontrado');
 
             return redirect(route('tramites.index'));
         }
@@ -147,14 +147,14 @@ class TramiteController extends AppBaseController
         $tramite = $this->tramiteRepository->find($id);
 
         if (empty($tramite)) {
-            Flash::error('Tramite not found');
+            Flash::error('Tramite no encontrado');
 
             return redirect(route('tramites.index'));
         }
 
         $tramite = $this->tramiteRepository->update($request->all(), $id);
 
-        Flash::success('Tramite updated successfully.');
+        Flash::success('Tramite actualizado correctamente.');
 
         return redirect(route('tramites.index'));
     }
@@ -169,14 +169,14 @@ class TramiteController extends AppBaseController
         $tramite = $this->tramiteRepository->find($id);
 
         if (empty($tramite)) {
-            Flash::error('Tramite not found');
+            Flash::error('Tramite no encontrado');
 
             return redirect(route('tramites.index'));
         }
 
         $this->tramiteRepository->delete($id);
 
-        Flash::success('Tramite deleted successfully.');
+        Flash::success('Tramite eliminado correctamente.');
 
         return redirect(route('tramites.index'));
     }
