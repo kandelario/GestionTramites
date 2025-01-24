@@ -75,7 +75,8 @@ class TramiteController extends AppBaseController
      */
     public function create()
     {
-        if(!Auth::user()->hasRole('Supervisor de Plaza') || !Auth::user()->hasRole('Admin')){
+        $user = Auth::user();
+        if($user->hasRole('Supervisor de Plaza')){
             $miPlaza = DB::table('plazas')->where('id', Auth::user()->plaza_id_asignado)->first();
             $asesores = DB::table('asesores')->where('plaza_id', $miPlaza->id)->get();
             // $tramites = DB::table('tramites')->whereIn('asesor_id', $asesores)->paginate(10);  
