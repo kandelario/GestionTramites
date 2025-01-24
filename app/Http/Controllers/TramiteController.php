@@ -54,8 +54,7 @@ class TramiteController extends AppBaseController
         if ($user->hasRole('Supervisor de Plaza')) {
             $asesores = DB::table('asesores')->select('id')->where('plaza_id', $miPlaza->id);
             $tramites = DB::table('tramites')->whereIn('asesor_id', $asesores)->paginate(10);
-            
-        }elseif($user->hasRole('Superadmin') || $user->hasRole('Admin')){
+        }else{
             $tramites = $this->tramiteRepository->paginate(10);
         }
         // dd($users);
