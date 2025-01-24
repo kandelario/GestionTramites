@@ -33,7 +33,7 @@
     </li>
 @endif
 
-@if (Auth::user()->hasRole('Supervisor de Plaza'))
+@if (Auth::user()->hasRole('Superadmin') || Auth::user()->hasRole('Admin'))
     <li class="nav-header">
         <p>SERVICIOS</p>
     </li>
