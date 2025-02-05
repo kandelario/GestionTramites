@@ -22,9 +22,9 @@
             {!! Form::model($tramite, ['route' => ['tramites.update', $tramite->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
-                <div class="row">
+                {{-- <div class="row">
                     @include('tramites.client_fields')
-                </div>
+                </div> --}}
 
                 <div class="row">
                     @include('tramites.fields')

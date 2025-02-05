@@ -117,7 +117,7 @@ class TramiteController extends AppBaseController
             $tramite->t_porcentaje = $request->t_porcentaje;
             $tramite->t_monto_para_asesor = $request->t_monto_para_asesor;
             if($request->t_estatus == null)
-                $tramite->t_estatus = 'pendiente';
+                $tramite->t_estatus = 'Pendiente';
             else
                 $tramite->t_estatus = $request->t_estatus;
             $tramite->c_nombre = $request->c_nombre;
@@ -184,6 +184,14 @@ class TramiteController extends AppBaseController
      */
     public function update($id, UpdateTramiteRequest $request)
     {
+        $request->validate([
+            'c_nombre' => 'required',
+            'c_nss' => 'required|numeric',
+            'c_curp' => 'required',
+            'asesor_id' => 'required',
+            'tramite' => 'required',
+            'c_monto' => 'required'
+        ]);
         $tramite = $this->tramiteRepository->find($id);
 
         if (empty($tramite)) {
@@ -191,8 +199,30 @@ class TramiteController extends AppBaseController
 
             return redirect(route('tramites.index'));
         }
+        $tramite->tramite = $request->tramite;
+        $tramite->t_fecha_solicitud_recurso = $request->t_fecha_solicitud_recurso;
+        $tramite->t_fecha_pago = $request->t_fecha_pago;
+        $tramite->t_porcentaje = $request->t_porcentaje;
+        $tramite->t_monto_para_asesor = $request->t_monto_para_asesor;
+        if($request->t_estatus == null)
+            $tramite->t_estatus = 'Pendiente';
+        else
+            $tramite->t_estatus = $request->t_estatus;
+        $tramite->c_nombre = $request->c_nombre;
+        $tramite->c_contacto = $request->c_contacto;
+        $tramite->c_nss = $request->c_nss;
+        $tramite->c_curp = $request->c_curp;
+        $tramite->estatus_afore = $request->estatus_afore;
+        $tramite->c_afore_fecha_baja = $request->c_afore_fecha_baja;
+        $tramite->c_afore = $request->c_afore;
+        if($request->c_monto == null)
+            $tramite->c_monto = 0;
+        else
+            $tramite->c_monto = $request->c_monto;
+        $tramite->asesor_id = $request->asesor_id;
+        $tramite->save();
 
-        $tramite = $this->tramiteRepository->update($request->all(), $id);
+        // $tramite = $this->tramiteRepository->update($request->all(), $id);
 
         Flash::success('Tramite actualizado correctamente.');
 
