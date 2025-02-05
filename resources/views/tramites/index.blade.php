@@ -1,6 +1,9 @@
 @extends('adminlte::page')
 
 @section('content')
+    @if (isset($responce))
+        <div class="alert alert-danger" role="alert">{{ $responce }}</div>
+    @endif
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">

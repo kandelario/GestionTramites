@@ -20,17 +20,17 @@
 
                 {!! Form::open(['route' => 'tramites.store']) !!}
                 <div id="accordion">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
+                    {{-- <div class="card">
+                        <div class="card-body"> --}}
+                            {{-- <div class="row">
                                 @include('tramites.client_fields')
-                            </div>
+                            </div> --}}
 
-                            <div class="row">
+                            {{-- <div class="row"> --}}
                                 @include('tramites.fields')
-                            </div>
-                        </div>
-                    </div>
+                            {{-- </div> --}}
+                        {{-- </div>
+                    </div> --}}
                 </div>
                 <div class="card-footer">
                     {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}

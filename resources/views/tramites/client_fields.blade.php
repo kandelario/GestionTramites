@@ -9,7 +9,11 @@
         <!-- Nombre Field -->
         <div class="form-group col-sm-3">
             {!! Form::label('c_nombre', 'Nombre:') !!}
-            {!! Form::text('c_nombre', null, ['class' => 'form-control', 'required', 'maxlength' => 255, 'maxlength' => 255]) !!}
+            {!! Form::text('c_nombre', null, ['class' => 'form-control', 'maxlength' => 255, 'maxlength' => 255]) !!}
+            @error('c_nombre')
+                <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>
+                <span class="text-danger"><em>El nombre del cliente es necesario.</em></span>
+            @enderror
         </div>
 
         <!-- N Contacto Field -->
@@ -22,12 +26,20 @@
         <div class="form-group col-sm-3">
             {!! Form::label('c_nss', 'NSS:') !!}
             {!! Form::text('c_nss', null, ['class' => 'form-control', 'minlength' => 0, 'maxlength' => 11]) !!}
+            @error('c_nss')
+                <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>
+                <span class="text-danger"><em>El número de seguro social del cliente es necesario.</em></span>
+            @enderror
         </div>
 
         <!-- Curp Field -->
         <div class="form-group col-sm-3">
             {!! Form::label('c_curp', 'CURP:') !!}
             {!! Form::text('c_curp', null, ['class' => 'form-control text-uppercase', 'maxlength' => 0, 'maxlength' => 18]) !!}
+            @error('c_curp')
+                <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>
+                <span class="text-danger"><em>La curp del cliente es necesaria.</em></span>
+            @enderror
         </div>
 
         <!-- Fecha Baja Field -->
@@ -56,7 +68,7 @@
         <!-- Estatus Field -->
         <div class="form-group col-sm-4">
             {!! Form::label('t_estatus', 'Estatus:') !!}
-            <select name="t_estatus" id="t_estatus" class="form-control" required>
+            <select name="t_estatus" id="t_estatus" class="form-control">
                 <option value="">Seleccione un estatus</option>
             @php
                 $_estatus = 'selected';

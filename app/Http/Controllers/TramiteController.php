@@ -76,16 +76,23 @@ class TramiteController extends AppBaseController
     public function create()
     {
         $user = Auth::user();
-        if($user->hasRole('Supervisor de Plaza')){
-            $miPlaza = DB::table('plazas')->where('id', Auth::user()->plaza_id_asignado)->first();
-            $asesores = DB::table('asesores')->where('plaza_id', $miPlaza->id)->get();
-            // $tramites = DB::table('tramites')->whereIn('asesor_id', $asesores)->paginate(10);  
-        }else{
-            $asesores = Asesor::all();
+        try {
+            if($user->hasRole('Supervisor de Plaza') ){
+                $miPlaza = DB::table('plazas')->where('id', Auth::user()->plaza_id_asignado)->first();
+                $asesores = DB::table('asesores')->where('plaza_id', $miPlaza->id)->get();
+                // $tramites = DB::table('tramites')->whereIn('asesor_id', $asesores)->paginate(10);  
+            }else{
+                $asesores = Asesor::all();
+            }
+            return view('tramites.create')
+                ->with('asesores', $asesores);
+        } catch (\Throwable $th) {
+            Flash::danger('Ocurrió un error al intentar registrar el trámite.');
+            return redirect(route('tramites.index'));
         }
         
-        return view('tramites.create')
-            ->with('asesores', $asesores);
+        
+        
     }
 
     /**
@@ -93,11 +100,44 @@ class TramiteController extends AppBaseController
      */
     public function store(CreateTramiteRequest $request)
     {
+        $request->validate([
+            'c_nombre' => 'required',
+            'c_nss' => 'required|numeric',
+            'c_curp' => 'required',
+            'asesor_id' => 'required',
+            'tramite' => 'required',
+            'c_monto' => 'required'
+        ]);
         $input = $request->all();
-
-        $tramite = $this->tramiteRepository->create($input);
-
-        Flash::success('Tramite registrado con éxito.');
+        try {
+            $tramite = new Tramite();
+            $tramite->tramite = $request->tramite;
+            $tramite->t_fecha_solicitud_recurso = $request->t_fecha_solicitud_recurso;
+            $tramite->t_fecha_pago = $request->t_fecha_pago;
+            $tramite->t_porcentaje = $request->t_porcentaje;
+            $tramite->t_monto_para_asesor = $request->t_monto_para_asesor;
+            if($request->t_estatus == null)
+                $tramite->t_estatus = 'pendiente';
+            else
+                $tramite->t_estatus = $request->t_estatus;
+            $tramite->c_nombre = $request->c_nombre;
+            $tramite->c_contacto = $request->c_contacto;
+            $tramite->c_nss = $request->c_nss;
+            $tramite->c_curp = $request->c_curp;
+            $tramite->estatus_afore = $request->estatus_afore;
+            $tramite->c_afore_fecha_baja = $request->c_afore_fecha_baja;
+            $tramite->c_afore = $request->c_afore;
+            if($request->c_monto == null)
+                $tramite->c_monto = 0;
+            else
+                $tramite->c_monto = $request->c_monto;
+            $tramite->asesor_id = $request->asesor_id;
+            $tramite->save();
+            // $tramite = $this->tramiteRepository->create($input);
+            Flash::success('Tramite registrado con éxito.');
+        } catch (\Throwable $th) {
+            Flash::success('Tramite registrado con éxito. Error' . $th->getMessage());
+        }
 
         return redirect(route('tramites.index'));
     }

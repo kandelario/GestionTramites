@@ -7,6 +7,7 @@
         <table class="display nowrap table table-striped text-center" id="tramites-table">
             <thead>
             <tr>
+                <th class="text-center">#</th>
                 <th class="text-center">Cliente</th>
                 <th class="text-center">N° Contacto</th>
                 <th class="text-center">NSS</th>
@@ -26,10 +27,18 @@
             </tr>
             </thead>
             <tbody>
-                
+                @php
+                    $n = 0;
+                @endphp
                 @foreach($tramites as $tramite)
                     @if ($tramite->id > 0)
                         <tr>
+                            <td class="text-center">
+                                @php
+                                    $n++;
+                                @endphp
+                                {{ $n }}
+                            </td>
                             <td class="text-center">{{ $tramite->c_nombre }}</td>
                             <td class="text-center">{{ $tramite->c_contacto }}</td>
                             <td class="text-center">{{ $tramite->c_nss }}</td>
