@@ -90,11 +90,11 @@
         </table>
     </div>
 
-    <div class="card-footer clearfix">
+    {{-- <div class="card-footer clearfix">
         <div class="float-right">
             @include('adminlte-templates::common.paginate', ['records' => $tramites])
         </div>
-    </div>
+    </div> --}}
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="{{ asset('/assets/js/bootstrap.bundle.min.js') }}"></script>
