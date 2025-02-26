@@ -120,7 +120,7 @@
             ]
         }
     },
-        paginate: true,
+        paginate: false,
         select: true,
         searching: true,
         ordering: true,
