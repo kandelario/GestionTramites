@@ -121,6 +121,10 @@
         }
     },
         paginate: true,
-        select: true
+        select: true,
+        searching: true,
+        ordering: true,
+        lengthChange: false,
+        scrollY: 400
     });
 </script>
