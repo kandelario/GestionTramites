@@ -124,7 +124,7 @@
         select: true,
         searching: true,
         ordering: true,
-        lengthChange: false,
+        lengthChange: true,
         scrollY: 400
     });
 </script>
